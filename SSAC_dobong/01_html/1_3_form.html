@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM 구성 태그</title>
+</head>
+<body>
+    <form>
+        <!-- label -> 웹 접근성에 도움이 되는 역할 -->
+        <label for="">
+            id: <input type="text" placeholder="id를 입력해주세요"/>
+        </label>
+        <br>
+        <label for="pw">
+            password: <input type="password" id="pw" />
+        </label>
+        <br>
+        <label for="">
+            email: <input type="email" name="" id="">
+        </label>
+        <br>
+        <!-- type = button -> 새로고침 X -->
+        <input type="button" value="login">
+        <br>
+        <!-- type = submit -> 마우스를 올렸을때 새로고침 진행 -->
+        <input type="submit" value="login">
+        <br>
+        <!-- button -> 기본적으로 타입이 Submit -->
+        <button>login</button>
+        <br>
+        <input type="color">
+        <br>
+        <input type="file">
+        <br>
+        <input type="number">
+        <br>
+        <input type="date">
+        <br>
+        <input type="range">
+        <br>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        
+        <hr>
+        <!-- name속성 -> 같은 그룹으로 묶어주는 역할 -->
+        <h5>다음 중 input의 타입이 아닌 것은?(모두 고르시오)</h5>
+        <label>
+            <input type="checkbox" name="input">alt
+        </label>
+        <label>
+            <input type="checkbox" name="input">text
+        </label>
+        <label>
+            <input type="checkbox" name="input">img
+        </label>
+        <label>
+            <input type="checkbox" name="input">click
+        </label>
+        <label>
+            <input type="checkbox" name="input">date
+        </label>
+        <br>
+        <br>
+        
+        <hr>
+        <h5>다음 중 img태그의 속성인 것은</h5>
+        <input type="radio" name="img" id="alt" checked><label for="alt">alt</label>
+        <input type="radio" name="img" id="bread"><label for="bread">bread</label>
+        <input type="radio" name="img" id="href"><label for="href">href</label>
+        <input type="radio" name="img" id="mouse"><label for="mouse">mouse</label>
+        <input type="radio" name="img" id="dragon" disabled><label for="dragon">dragon</label>
+
+        <hr>
+        <select>
+            <optgroup label="빨간 꽃">
+                <option value="장미" disabled>장미</option>
+                <option value="튤립">튤립</option>
+                <option value="동백꽃">동백꽃</option>
+            </optgroup>
+            <optgroup label="하얀 꽃">
+                <option value="벚꽃">벚꽃</option>
+                <option value="매화">매화</option>
+                <option value="국화">국화</option>
+            </optgroup>
+        </select>
+    </form>
+</body>
+</html>

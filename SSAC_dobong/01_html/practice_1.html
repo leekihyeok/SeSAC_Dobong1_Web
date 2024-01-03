@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습2</title>
+</head>
+<body>
+    <h3>설문조사</h3>
+    <p></p>
+    <div><label for="">이름: <input type="text"></label></div>
+    <div><label for="">이메일: <input type="email" placeholder="love@example.com"></label></div>
+
+    <h4>나이</h4>
+    <div>
+        <label for="age">
+            <input type="radio" name="age" id="age10" checked><label for="age10">10대</label>
+            <input type="radio" name="age" id="age20"><label for="age20">20대</label>
+            <input type="radio" name="age" id="age30"><label for="age30">30대</label>
+            <input type="radio" name="age" id="age40"><label for="age40">40대</label>
+            <input type="radio" name="age" id="age50" disabled><label for="age50">dragon</label>
+        </label>
+    </div>
+
+    <h4>원하는 강의(복수응답 가능합니다.)</h4>
+    <div>
+        <label>
+            <input type="checkbox" name="lecture" checked>html
+        </label>
+        <label>
+            <input type="checkbox" name="lecture">javascript
+        </label>
+        <label>
+            <input type="checkbox" name="lecture">css
+        </label>
+    </div>
+    <p></p>
+    <div>
+        <textarea name="" id="" cols="100" rows="10">하고 싶은 말을 써주세요 :)</textarea>
+        <button>제출</button>
+    </div>
+</body>
+</html>
