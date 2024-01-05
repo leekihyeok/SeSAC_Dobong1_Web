@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector - 가상클래스 & 가상요소 선택자</title>
+    <style>
+        .div1{width: 100px; height: 100px; background-color: palevioletred; text-align: center;line-height: 100px;}
+
+        /* 1. 가상 클래스 선택자 */
+        /* 1-1 hover, active, focus, checked */
+        /* 
+        - E:active {} - E 요소에 마우스 클릭 또는 키보드 엔터가 눌리는 "동안"
+        - E:hover {} - E 요소에 마우스가 올라가 있는 동안
+        - E:focus {} - E 요소에 포커스가 머물러 있는 동안 (input, textarea)
+        - E:checked {} - E 요소가 체크 되었을 때 (radio, checkbox)
+        */
+
+        .div1:hover{background-color: cornflowerblue; height: 150px;}
+        .div1:active{background-color: coral; width: 150px;}
+        input:focus{background-color: goldenrod; outline-color: darkgreen;}
+        a{font-size: 25px; font-weight: bold; color: indigo;}
+        a:hover{background-color: darkcyan;}
+        a:active{background-color: beige; color: black;}
+        a:visited{color: crimson;}
+
+        /* 1-2 순서와 관련된 가상 클래스 */
+        /*
+        - E:first-child - E요소가 첫번째라면 선택
+        - E:last-child - E요소가 마지막이라면 선택
+        - E:nth-child(n) - E요소가 n번째라면 선택
+          -> 가로 안에는 숫자, n과 관련된 수식, odd/even 가능
+        - E:not(XYZ) - E요소 중에 XYZ가 아닌 요소 선택
+         */
+
+         .zoo > * {background-color: aquamarine; color: pink; font-size: 20px;}
+         .zoo > li:last-child{background-color: black;}
+         .zoo > *:first-child{background-color: beige;}
+         .zoo > li:nth-child(2n){background-color:darkcyan;}
+         .zoo > *:not(div){background-color: darkgoldenrod;}
+
+         /* 가상요소 선택자 */
+         .div2 {background-color: pink; font-size: 30px; font-weight: bold;}
+         .div2::after{
+            content: ' after';
+            color: white;
+         }
+         .div2:hover::after{content: ' after'; color: brown;}
+    </style>
+</head>
+<body>
+    <input type="text">
+    <a href="https://www.naver.com" target="_blank">네이버</a>
+    <a href="https://www.google.com" target="_blank">구글</a>
+    <div class="div1">
+        <span>div1</span>
+    </div>
+
+    <hr>
+    <ul class="zoo">
+        <h1>동물원입니다.</h1>
+        <div>원숭이</div>
+        <li>lion</li>
+        <li>rabbit</li>
+        <li>tiger</li>
+        <li>elephant</li>
+        <li>puppy</li>
+        <li>코알라</li>
+        <li>panda</li>
+    </ul>
+    <hr>
+    <div class="div2">가상요소 선택자</div>
+</body>
+</html>
