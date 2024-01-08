@@ -1,0 +1,30 @@
+.box{
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    border: 1px solid black;
+}
+.back{
+    background: palegoldenrod;
+    background: linear-gradient(90deg, black, gray, white);
+    background: linear-gradient(to bottom, black, gray, white);
+    /* 단축 속성 - background: color image repeat position/size; */
+}
+.back-img{
+    background-image: url('../img/small_img.png');
+    background-repeat: repeat;
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    background-repeat: no-repeat;
+
+    /* background-position: 100px 200px; */
+    /* background-position: 100px; */
+    /* background-position: top;
+    background-position: left;
+    background-position: right;
+    background-position: bottom; */
+    background-position: center;
+
+    /* background-size: contain; */
+    /* background-size: cover; */
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{position: relative; width: 800px; height: 500px; background-color: skyblue;}
+        .box div{
+            display: inline-block;
+            width: 250px;
+            height: 500px;
+            /* border: 1px solid black; */
+            background-image: url('./img/lion.png');
+        }
+        .item1{background-repeat: repeat-y;}
+        .item2{background-repeat: no-repeat; background-position: 100px 30px; background-size: cover;}
+        .item3{background-position: left; background-repeat: no-repeat; background-size: contain;}
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="item1"></div>
+        <div class="item2"></div>
+        <div class="item3"></div>
+    </div>
+</body>
+</html>

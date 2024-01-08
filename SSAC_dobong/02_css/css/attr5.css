@@ -1,0 +1,69 @@
+.container{
+    max-width: 1000px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #333;
+    /* flex-direction: row / row-reverse / column / coloumn-reverse; */
+    display: flex;
+    /* flex-direction: row; */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; */
+
+    flex-wrap: wrap;
+
+    /* justify-content: ; - 주축의 정렬 방법 
+       1. flex-start - 아이템을 시작점 기준으로 나열
+       2. flex-end - 아이템을 끝점 기준으로 정렬
+       3. center - 아이템을 중앙 정렬
+       4. space-between - 처음과 마지막 아이템을 양 끝에 붙이고, 나머지 영역을 공평하게 나눔
+       5. space-around - start부터 첫 아이템의 간격, 마지막 아이템부터 end까지의 간격 * 2 = 아이템 끼리의 간격
+       6. space-evenly - 아이템의 모든 영역을 동등하게 나누어줌*/
+
+    /* justify-content: flex-start; */
+    /* justify-content: flex-end; */
+    /* justify-content: center; */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
+
+    /* align-items
+       1. flex-direction이 row일 때 - 교차축=수직
+       2. flex-direction이 column일 때- 교차축=수평 */
+    /* align-items: stretch;
+    align-items: flex-start;
+    align-items: flex-end;
+    align-items: center; */
+
+    /* align-content
+       1. 여러줄 교차축 정렬
+       2. 반드시 flex-wrap: wrap; 이어야 함 */
+    /* align-content: flex-start; */
+    /* align-content: flex-end; */
+    /* align-content: center ; */
+    /* align-content: stretch; */
+    /* align-content: space-between; */
+    /* align-content: space-around; */
+}
+.items{
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}
+.item1{
+    background-color: red;
+}
+.item2{
+    background-color: orange;
+}
+.item3{
+    background-color: yellow;
+}
+.item4{
+    background-color: green;
+}
+.item5{
+    background-color: blue;
+}

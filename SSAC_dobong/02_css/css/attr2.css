@@ -53,3 +53,64 @@
 .em{font-size: 2em;}
 /* 1rem - 16px / 2rem - 32px */
 /* 2em - 부모의 글꼴을 가져와 2배씩 늘어남 */
+
+.square{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.border{
+    background-color: aliceblue;
+    /* 단축속성: 굵기 모양 색깔 */
+    /* border: 3px solid bisque; */
+    border-color: red orange;
+    border-style: dotted;
+    border-width: 3px;
+}
+
+.rounded{
+    background-color: aquamarine;
+    /* border-radius: 50px; */
+    /* border-radius: 5px 10px 20px 40px; */
+    border-radius: 5px 20px 40px;
+}
+/* practice */
+.box1{background-color: black;border-style: dashed; border-color: aqua; border-width: 3px 2px 1px 3px;}
+.box2{background-color: beige; border-color: aqua pink lime red; border-style: dotted; border-width: 3px;}
+.box3{border-color: aqua; border-width: 3px;}
+.box4{border-color: aqua; border-width: 3px;}
+
+/* box-sizing */
+.box-sizing{
+    background-color: orange;
+    border: 15px solid red;
+    padding: 20px;
+}
+/* 크기가 밖으로 더 커짐 - width + padding + border */
+.content-box{
+    box-sizing: content-box;
+}
+/* 크기가 허락하는한 모양 안에서 해결 */
+.border-box{
+    box-sizing: border-box;
+}
+.d-none {
+    /* display: none; */
+    background-color: red;
+}
+.invisible {
+    /* visibility: hidden; */
+    background-color: orangered;
+}
+.opacity-0 {
+    /* opacity: 0; */
+    background-color: tomato;
+}
+
+/* overflow */
+.overflow-hidden{overflow: hidden;}
+.overflow-auto{overflow: auto;}
+.overflow-scroll{overflow: scroll;}
+.overflow-visible{overflow: visible;}
