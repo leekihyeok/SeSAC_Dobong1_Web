@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Another Node</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="green">1</div>
+        previous 테스트 
+        <div class="box" id="red">2</div>
+        next 테스트
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+    <button onclick="getParent()">getParent</button>
+    <button onclick="pElSibling()">pElSibling</button>
+    <button onclick="pNoSibling()">pNoSibling</button>
+    <button onclick="nElSibling()">nElSibling</button>
+    <button onclick="nNoSibling()">nNoSibling</button>
+
+    <script>
+        let container = document.getElementsByClassName('container');
+        let greenBox = document.getElementById('green');
+        let redBox = document.getElementById('red');
+
+        //parentNode - 부모요소를 가져옴
+        function getParent(){
+            console.log(greenBox.parentNode);
+        }
+        //이전형제
+        function pElSibling(){
+            console.log(redBox.previousElementSibling); //요소 기준으로 앞에 요소를 선택
+        }
+        function pNoSibling(){
+            console.log(redBox.previousSibling); //Dom 트리에서 바로 앞에 있는 요소를 선택
+        }
+
+        function nElSibling(){
+            console.log(redBox.nextElementSibling); //요소 기준으로 뒤에 요소를 선택
+        }
+        function nNoSibling(){
+            console.log(redBox.nextSibling); //Dom 트리에서 바로 뒤에 있는 요소를 선택
+        }
+    </script>
+</body>
+</html>
