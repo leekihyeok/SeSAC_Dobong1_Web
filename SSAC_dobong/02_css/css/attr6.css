@@ -1,3 +1,4 @@
+/* Transform */
 .img-box{
     background-color: rgb(188, 95, 95);
     width: 400px;
@@ -51,3 +52,35 @@
      transform: rotateY(180deg);
      /* backface-visibility: hidden; */
 }
+
+/* Transition */
+.box{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-color: antiquewhite;
+}
+.box1:hover{
+    background-color: cadetblue;
+    width: 120px;
+    height: 120px;
+    transition-duration: 1s;
+    /* transition-delay: 1s;
+    transition-property: height; */
+    transition-timing-function: ease;
+}
+.box2:hover{
+    /* transition 속성
+       transition: propety duration function delay */
+    background-color: coral;
+    transform: translateX(100px) scaleX(2);
+    transition: transform 0.5s linear 2s;
+}
+.box3:hover{
+    transition: .6s;
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    display: none;
+}
+
+
