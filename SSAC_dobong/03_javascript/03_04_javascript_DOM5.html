@@ -16,8 +16,8 @@
         <div class="div1">div1</div>
         <div class="div2">div2</div>
         
-        <input type="text">
     </div>
+    <input type="text">
 
 
     <script>
@@ -49,6 +49,26 @@
         let input = document.querySelector('input');
         input.addEventListener('focus', function(){
             console.log('input에 focus 이벤트 발생');
+        })
+
+        //keyboard
+        input.addEventListener('keydown', function(e){
+            console.log('e', e);//이벤트 자체
+            console.log('e.target', e.target);//input 요소
+            console.log('e.target.value : ', e.target.value);//안에 쓰인 텍스값 표시
+            
+            console.log('input에 keydown 이벤트 발생');
+        })
+
+        //scroll
+        let container = document.querySelector('.container');
+        //scroll이 없을 때 상황
+        container.addEventListener('scroll', function(){
+            console.log('container에 scroll 이벤트 발생');
+        })
+        //scroll 있을때
+        window.addEventListener('scroll', function(){
+            console.log('window에 scroll 이벤트 발생');
         })
     </script>
 </body>

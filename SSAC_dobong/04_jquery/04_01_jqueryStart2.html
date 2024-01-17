@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Jquery Start2</title>
+    <script>
+        function appendJs() {
+            let ul = document.querySelector('ul');
+            let li = document.createElement('li');
+            li.innerText = 'red';
+            ul.append(li);
+        }
+        function appendJquery() {
+            $('ul').append('<li>red(Jquery append)</li>');
+        }
+        function prependJs() {
+            let ul = document.querySelector('ul');
+            let li = document.createElement('li');
+            li.innerText = 'violet';
+            ul.prepend(li);
+        }
+        function prependJquery() {
+            $('ul').prepend('<li>violet(Jquery prepend)</li>');
+        }
+        function beforeJs() {
+            let green = document.querySelector('.green');
+            let li = document.createElement('li');
+            li.innerText = 'black';
+            green.before(li);
+        }
+        function beforeJquery() {
+            $('.green').before('<li>black(Jquery before)</li>');
+        }
+        
+    </script>
+</head>
+<body>
+    <ul>
+        <li>orange</li>
+        <li class="green">green</li>
+        <li>navy</li>
+        <!-- 추가하기 -->
+    </ul>
+    <button onclick="appendJs()">append js</button>
+    <button onclick="appendJquery()">append jquery</button>
+    
+    <button onclick="prependJs()">prepend js</button>
+    <button onclick="prependJquery()">prepend jquery</button>
+
+    <button onclick="beforeJs()">before js</button>
+    <button onclick="beforeJquery()">before jquery</button>
+</body>
+</html>

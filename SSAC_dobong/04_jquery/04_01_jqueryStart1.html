@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>Jquery Start</title>
+    <script>
+        function setValue(){
+            // input 태그에 value 값을 설정
+            $("input").val('setting');
+        }
+
+        function getValue(){
+            //input 태그의 value 값을 가져오기 
+            alert($('input').val());
+            $("input").val('');
+        }
+
+        function changeStyle(){
+            $('span').css("font-size", "28px")
+        }
+
+        function changeAttribute(){
+            $('input').attr("placeholder", "name");
+            // javascript에서 setAttribute('placeholder', 'name')와 같은 기능
+        }
+
+        function changeText(){
+            $("span").text("Jquery문으로 바꿨습니다.");
+        }
+
+        function changeHTML(){
+            $('p').html("<h1>jquery로 바꿨습니다</h1>")
+        }
+    </script>
+</head>
+<body>
+    <input type="text">
+    <button onclick="setValue()">setValue</button>
+    <button onclick="getValue()">getValue</button>
+    <button onclick="changeAttribute()">changeAttribute</button>
+    
+    <hr>
+    <span>안녕</span>
+    <button onclick="changeStyle()">changeStyle</button>
+    <button onclick="changeText()">changeText</button>
+    
+    <hr>
+    <p>HTML바꾸기</p>
+    <button onclick="changeHTML()">changeHTML</button>
+</body>
+</html>
