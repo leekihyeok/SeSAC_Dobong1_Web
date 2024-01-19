@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어 쿼리</title>
+    <style>
+        /* 교차 사용 */
+        div{
+            width: 100px;
+            height: 100px;
+            border: 10px solid black;
+            text-align: center;
+            line-height: 50px;
+        }
+        
+        /* @media (min-width: 300px) and (max-width: 600px){ */
+        /* 비교 연산자 사용 가능 */
+        @media (300px <= width <= 600px){
+            .moreLess{
+                background-color: purple;
+                color: yellow;
+            }
+        }
+
+        /* 가로 */
+        @media (orientation: landscape){
+            body{
+                background-color: pink;
+            }
+        }
+        /* 세로 */
+        @media (orientation: portrait){
+            body{
+                background-color: gold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="moreLess">more and less</div>
+</body>
+</html>
