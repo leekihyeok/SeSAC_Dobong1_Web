@@ -53,6 +53,7 @@ app.get("/practice", function (req, res) {
   res.render("result", {
     title: "GET",
     userInfo: req.query,
+    addInfo: false,
     // res.render('뷰', {보내줄 데이터})
   });
 });
@@ -64,7 +65,16 @@ app.post("/practice", function (req, res) {
   res.render("result", {
     title: "POST",
     userInfo: req.body,
+    addInfo: true,
   });
+});
+
+//-------
+
+
+app.post("/js-form-check", (req, res) => {
+  console.log(req.body);
+  res.send("validation 응답");
 });
 
 app.listen(PORT, function () {

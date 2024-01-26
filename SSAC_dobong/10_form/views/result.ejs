@@ -34,9 +34,16 @@
       <br />
       관심사: <%= userInfo.interest %>
       <br />
-      좋아하는 색상: <%= userInfo.color %>
+      <%# if(addInfo) { %> 좋아하는 색상:
+      <span class="color"><%= userInfo.color %></span>
       <br />
-      좋아하는 숫자: <%= userInfo.myNum %>
+      좋아하는 숫자: <%= userInfo.myNum %> <%# } %>
     </div>
+    <script>
+      document.addEventListener("DOMContentedLoaded", () => {
+        const color = document.querySelector(".color");
+        color.style.color = "<%= userInfo.color%>";
+      });
+    </script>
   </body>
 </html>
