@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>콜백 지옥</title>
+    <style>
+      body {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>배경색이 1초에 한 번씩 변경</h1>
+    <script>
+      function dealyChangeColor(color, delay) {
+        return new Promise(function (resolv, reject) {
+          setTimeout(() => {
+            document.body.style.backgroundColor = color;
+            resolv();
+          }, delay);
+        });
+      }
+      let colors = [
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "blue",
+        "navy",
+        "purple",
+      ];
+      async function exec() {
+        for (let i = 0; i < colors.length; i++) {
+          await dealyChangeColor(colors[i], 1000);
+        }
+      }
+      exec();
+    </script>
+  </body>
+</html>

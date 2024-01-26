@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form 전송 결과</title>
+  </head>
+  <body>
+    <!-- GET -->
+    <!-- <h1><%#= title %>요청 확인하기</h1>
+    <div>
+      <span><%#= userInfo.id %>님 환영합니다.</span>
+      <span>(<%#= userInfo.email %>)</span>
+    </div>
+    <div><span>비밀번호</span><%#= userInfo.pw %><span>이군요!!</span></div>
+    <a href="/">홈으로 이동하기</a> -->
+
+    <!-- POST -->
+    <!-- <h1><%#= title %>요청 확인하기</h1>
+    <div>
+      <span><%#= userInfo.id2 %>님 환영합니다.</span>
+    </div>
+    <div><span>비밀번호</span><%#= userInfo.pw2 %><span>이군요!!</span></div>
+    <a href="/">홈으로 이동하기</a> -->
+
+    <!-- ejs 주석 -> 앞에 # -->
+    <%# %>
+
+    <h2>내 이름은 <%= userInfo.name %>입니다.</h2>
+    <div>
+      성별: <%= userInfo.sex %>
+      <br />
+      생년월일: <%= userInfo.yy %>년 <%= userInfo.mm %>월 <%= userInfo.dd %>일
+      <br />
+      관심사: <%= userInfo.interest %>
+      <br />
+      좋아하는 색상: <%= userInfo.color %>
+      <br />
+      좋아하는 숫자: <%= userInfo.myNum %>
+    </div>
+  </body>
+</html>

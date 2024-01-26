@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>GET 요청</h2>
+    <form action="/getForm" method="get">
+      <label for="">
+        id:
+        <input type="text" name="id" />
+      </label>
+      <br />
+      <label for="">
+        e-mail:
+        <input type="email" name="email" />
+      </label>
+      <br />
+      <label for="">
+        password:
+        <input type="password" name="pw" />
+      </label>
+      <br />
+      <button type="button">제출(button)</button>
+      <button>제출(submit)</button>
+      <!-- button의 디폴트 값이 submit -->
+    </form>
+
+    <h2>POST 요청</h2>
+    <form action="/postForm" method="post">
+      <label for="id">ID</label>
+      <input
+        type="text"
+        id="id"
+        name="id2"
+        required
+        pattern="^([a-zA-z0-9기-힣]){4,10}$"
+        title="대소문자, 한글, 숫자, 4글자 이상"
+        placeholder="아이디를 입려해주세요"
+      />
+      <label for="pw">비밀번호</label>
+      <input
+        type="password"
+        id="pw"
+        name="pw2"
+        required
+        pattern="^([a-z0-9]){8,12}$"
+        placeholder="비밀번호를 입력해주세요"
+      />
+      <br />
+      <fieldset>
+        <legend>체크박스</legend>
+        <label for=""
+          ><input type="checkbox" name="agree" value="마케팅 동의" /> 마케팅
+          동의</label
+        >
+        <br />
+        <label for=""
+          ><input type="checkbox" name="agree" value="개인정보 수집 동의" />
+          개인정보 수집 동의</label
+        >
+        <br />
+        <label for=""
+          ><input type="checkbox" name="agree" value="이용약관 동의" />
+          이용약관</label
+        >
+      </fieldset>
+
+      <input type="submit" value="제출" />
+
+      <div>
+        <a href="practice1">실습문제1</a>
+        <a href="practice2">실습문제2</a>
+      </div>
+    </form>
+  </body>
+</html>
