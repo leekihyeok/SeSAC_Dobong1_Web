@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form name="login">
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="id" />
+      <br />
+      <label for="pw">비밀번호</label>
+      <input type="password" id="pw" name="pw" />
+      <br />
+      <button type="button" value="회원가입" onclick="join()">회원가입</button>
+    </form>
+    <div class="resultBox"></div>
+    <script>
+      const resultBox = document.querySelector(".resultBox");
+      async function join() {
+        const form = document.forms["login"];
+
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+        console.log(data);
+
+        try {
+          const response = await axios({
+            method: "POST",
+            url: "/login",
+            data: data,
+          });
+          if (response.data === true) {
+            resultBox.innerText = `POST axios 요청 완료: 회원 가입 완료`;
+            resultBox.style.color = "blue";
+          } else {
+            resultBox.innerText = `POST axios 요청 완료: 회원 가입 실패`;
+            resultBox.style.color = "red";
+          }
+        } catch (err) {
+          console.log("에러 발생", err);
+        }
+      }
+    </script>
+  </body>
+</html>

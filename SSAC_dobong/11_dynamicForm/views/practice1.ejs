@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form name="prAxiosGet">
+      <label for="name">이름</label>
+      <input type="text" id="name" name="name" />
+      <br />
+      <fieldset>
+        <legend>성별</legend>
+        <label for="">
+          <input type="radio" name="gender" value="남자" />남자
+        </label>
+        <label for="">
+          <input type="radio" name="gender" value="여자" />여자
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>생년월일</legend>
+        <label for="">
+          <select name="yy" id="year">
+            <% for(let i=1940; i<=2024; i++) {%>
+            <option value="<%= i %>"><%= i %></option>
+            <% }; %>
+          </select>
+          년
+        </label>
+        <label for="">
+          <select name="mm" id="month">
+            <% for(let i=1; i<=12; i++) {%>
+            <option value="<%= i %>"><%= i %></option>
+            <% }; %>
+          </select>
+          월
+        </label>
+        <label for="">
+          <select name="dd" id="day">
+            <% for(let i=1; i<=31; i++) {%>
+            <option value="<%= i %>"><%= i %></option>
+            <% }; %>
+          </select>
+          일
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>관심사</legend>
+        <label for=""
+          ><input type="checkbox" name="interest" value="여행" />여행</label
+        >
+        <label for=""
+          ><input type="checkbox" name="interest" value="패션" />패션</label
+        >
+        <label for=""
+          ><input type="checkbox" name="interest" value="음식" />음식</label
+        >
+      </fieldset>
+      <button type="button" value="회원가입" onclick="join()">회원가입</button>
+    </form>
+    <div class="resultBox"></div>
+    <script>
+      const resultBox = document.querySelector(".resultBox");
+      async function join() {
+        const form = document.forms["prAxiosGet"];
+        let basicIn;
+        for (var i = 0; form.interest[i]; ++i) {
+          if (form.interest[i].checked) {
+            basicIn = form.interest[i].value;
+            break;
+          }
+        }
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          yy: form.yy.value,
+          mm: form.mm.value,
+          dd: form.dd.value,
+          interest: basicIn,
+        };
+        console.log(data);
+        if (!form.name.checkValidity()) {
+          resultBox.textContent = form.name.validationMessage; // 이 입력란을 작성하세요
+        } else {
+          try {
+            const response = await axios({
+              method: "GET",
+              url: `/axios?name=${data.name}&gender=${data.gender}&yy=${data.yy}&mm=${data.mm}&dd=${data.dd}&interest=${data.interest}`,
+            });
+            console.log(response.data);
+            const { name, gender, yy, mm, dd, interest } = response.data;
+            resultBox.innerText = `GET axios 요청 완료: ${name}님의 ${gender} 생년월일은${yy}년 ${mm}월 ${dd}일이며 관심사는 ${interest}입니다.`;
+          } catch (err) {
+            console.log("err!!", err);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

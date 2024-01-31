@@ -71,7 +71,6 @@ app.post("/practice", function (req, res) {
 
 //-------
 
-
 app.post("/js-form-check", (req, res) => {
   console.log(req.body);
   res.send("validation 응답");
