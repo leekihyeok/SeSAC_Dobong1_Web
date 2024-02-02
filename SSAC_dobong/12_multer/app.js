@@ -18,17 +18,15 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 // app.use(express.urlencoded({ extended: true }));
 // app.use(express.json());
 
-// 미들웨어 multer
-const upload = multer({
-  dest: "uploads/",
-});
-// 멀티 파일 및 파일 이름 경로 지장 ver1
 const uploadDetail = multer({
   storage: multer.diskStorage({
     destination(req, file, done) {
       done(null, "uploads/");
     },
     filename(req, file, done) {
+      // extname(파일명): 확장자 추출
+      // basename(파일명, 확장자): 확장자를 제외한 파일명 추출
+      // basename(경로명): (확장자 포함된) 파일명 추출
       const ext = path.extname(file.originalname);
       done(null, path.basename(file.originalname, ext) + Date.now() + ext);
     },

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- head 인클루드 -->
+    <%- include('./include/head.ejs')%>
+    <style>
+      h1,
+      p {
+        text-align: center;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+      p {
+        white-space: pre-line;
+        /* 비어있는 띄어쓰기가 표시됨 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header 인클루드 -->
+    <%- include('./include/header.ejs') %>
+    <h1><%= title %></h1>
+    <p><%= content %></p>
+    <% if(img){%>
+    <img src="/<%=img%>" alt="<%= contentID %>번글 이미지" width="300" />
+    <% } %>
+  </body>
+</html>

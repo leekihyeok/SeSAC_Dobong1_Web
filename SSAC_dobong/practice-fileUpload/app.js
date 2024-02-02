@@ -7,6 +7,11 @@ const PORT = 8080;
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+// app.use("/uploads", express.static(__dirname + "/uploads"));
+// app.use(express.json());
+
+// app.use(express.static("/static", express.static(__dirname + "/uploads")));
+
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(express.json());
 app.use(express.static("./views/css"));
@@ -31,22 +36,6 @@ const upload = multer({
 app.get("/", (req, res) => {
   res.render("index");
 });
-
-// app.post("/login", (req, res) => {
-//   res.send(req.body);
-//   //파일 접근 및 경로 세팅
-//   console.log("-----");
-//   app.post("/loginFile", upload.single("upload"), (req, res) => {
-//     console.log(req.file);
-//     console.log(req.body);
-//     const responseObj = {
-//       data: req.body,
-//       file: req.file,
-//     };
-//     console.log(responseObj);
-//     res.send(responseObj);
-//   });
-// });
 
 app.post("/upload", upload.single("profile"), function (req, res) {
   console.log(req.file);
