@@ -59,13 +59,16 @@
           ><input type="checkbox" name="interest" value="음식" />음식</label
         >
       </fieldset>
-      <button type="button" value="회원가입" onclick="join()">회원가입</button>
+      <button type="button" value="회원가입" onclick="submitInfo()">
+        회원가입
+      </button>
     </form>
     <div class="resultBox"></div>
     <script>
       const resultBox = document.querySelector(".resultBox");
+      const form = document.forms["prAxiosGet"];
+
       async function join() {
-        const form = document.forms["prAxiosGet"];
         let basicIn;
         for (var i = 0; form.interest[i]; ++i) {
           if (form.interest[i].checked) {
@@ -97,6 +100,41 @@
             console.log("err!!", err);
           }
         }
+      }
+
+
+      
+      function submitInfo() {
+        //관심사 새로운 배열로 만들기
+        const interests = [];
+        form.interest.forEach((checkBox) => {
+          if (checkBox.checked) {
+            interests.push(checkBox.value);
+          }
+        });
+
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          yy: form.yy.value,
+          mm: form.mm.value,
+          dd: form.dd.value,
+          interest: interests,
+        };
+        axios({
+          method: "GET",
+          url: "/axios-practice1",
+          params: data,
+        }).then(function (res) {
+          console.log(res);
+          console.log(res.data);
+
+          const { name, gender, yy, mm, dd, interest } = res.data;
+
+          resultBox.innerText = `${name}님 환영합니다.
+생일은 ${yy}년 ${mm}월 ${dd}일
+관심사는 ${interest}`;
+        });
       }
     </script>
   </body>

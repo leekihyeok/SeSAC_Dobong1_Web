@@ -1,0 +1,29 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.name {
+  font-weight: bold;
+  color: skyblue;
+}
+.profile {
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 0 20px #0002;
+}
+.info {
+  width: 200px;
+  margin: 0 auto;
+}
+.info div {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+div span:first-child {
+  font-weight: bold;
+}
