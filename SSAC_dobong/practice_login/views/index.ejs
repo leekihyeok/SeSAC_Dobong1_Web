@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      .success {
+        color: blue;
+        font-weight: 700;
+      }
+      .error {
+        color: red;
+        font-weight: 700;
+      }
+      label {
+        display: flex;
+      }
+      label span {
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="login">
+      <label for="id"
+        ><span>아이디</span>
+        <input type="text" id="id" name="id" required />
+      </label>
+      <label for="pw"
+        ><span>비밀번호</span>
+        <input type="password" id="pw" name="pw" required />
+      </label>
+      <br />
+      <button type="button" value="회원가입" onclick="clickLogin()">
+        회원가입
+      </button>
+    </form>
+    <div class="resultBox"></div>
+    <script>
+      const resultBox = document.querySelector(".resultBox");
+      const form = document.forms["login"];
+
+      function clickLogin() {
+        // 유효성 검증
+        console.log(form.id.checkValidity());
+        if (!form.id.checkValidity() || !form.pw.checkValidity()) {
+          resultBox.textContent = "아이디와 비밀번호는 필수 값입니다.";
+          return;
+        }
+
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+        axios({
+          method: "POST",
+          url: "/login",
+          data: data,
+        })
+          .then(function (res) {
+            console.log(res.data);
+            // message 성공시 파랑글자 실패시 빨강글자
+            if (res.data.isSuccess) {
+              resultBox.textContent = `${res.data.userInfo.id}님 환영합니다`;
+              resultBox.classList.add("success");
+              resultBox.classList.remove("error");
+            } else {
+              resultBox.textContent = "로그인 실패, 아이디 또는 패스워드 오류";
+              resultBox.classList.add("error");
+              resultBox.classList.remove("success");
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>
