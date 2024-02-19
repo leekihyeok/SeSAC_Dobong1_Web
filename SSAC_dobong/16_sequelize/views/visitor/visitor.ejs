@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/static/visitor.js" defer></script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      form,
+      table {
+        width: 300px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form name="visitor-form" >
+      <h1>방명록 페이지</h1>
+      <fieldset>
+        <legend>방명록 등록</legend>
+        <input type="text" name="name" id="name" placeholder="사용자 이름" /><br />
+        <input
+          type="text"
+          name="comment"
+          id="comment"
+          placeholder="간단 방명록 작성"
+        /><br />
+        <div id="btn-group">
+          <button type="button" onclick="createVisitor()">방명록 등록</button>
+        </div>
+      </fieldset>
+    </form>
+    <br />
+    <br />
+    <table border="1" cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>작성자</th>
+          <th>방명록</th>
+          <th>수정</th>
+          <th>삭제</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%for(let visitor of visitorList){ %>
+        <tr>
+          <td><%=visitor.id %></td>
+          <td><%=visitor.name %></td>
+          <td><%=visitor.comment %></td>
+          <td>
+            <button type="button" onclick="editVistitor(`<%=visitor.id%>`)">수정</button>
+          </td>
+          <td>
+            <button type="button"  onclick="deleteVisitor(this,`<%=visitor.id%>`)">삭제</button>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+  </body>
+</html>

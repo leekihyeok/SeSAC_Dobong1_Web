@@ -1,13 +1,12 @@
 const Visitor = function (Sequelize, DataTypes) {
-  // Sequelize 는 model/index.js 의 sequelize
-  // Datatypes 는 mode/index.js의 Sequelize
+  // Sequelize 는 model/index.js 의 Sequelize
+  // DataTypes 는 model/index.js 의 Sequelize
 
-  //   const model = Sequelize.define(params1, params2, params3);
+  //   const model=Sequelize.define(params1,params2,params3)
 
-  //   params1: 모델 이름 설정
-  //   params2: 컬럼을 정의, (CREATE TABLE 제약조건)
-  //   params3: 모델 옵션
-
+  //params1 : 모델 이름 설정 문자열처리
+  //params2 : 컬럼을 정의,(create table 제약조건)
+  //params3 : 모델 옵션
   const model = Sequelize.define(
     "Visitor",
     {
@@ -27,12 +26,12 @@ const Visitor = function (Sequelize, DataTypes) {
     },
     {
       tableName: "visitor",
-      timestamps: false,
+      timestamps: false, // 오타 수정: timestamps
       freezeTableName: true,
     }
   );
 
-  return model;
+  return model; // 모델 객체 반환
 };
 
 module.exports = Visitor;

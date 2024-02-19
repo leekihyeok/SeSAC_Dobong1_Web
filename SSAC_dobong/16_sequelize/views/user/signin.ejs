@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <head>
+    <style>
+      form {
+        width: 300px;
+        text-align: center;
+      }
+      div {
+        width: 300px;
+        margin: 7px;
+        display: flex;
+        justify-content: center;
+      }
+      div label {
+        padding-right: 20px;
+      }
+      button {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+      [로그인] 버튼을 클릭하면 profile.ejs에서 특정 유저 정보를 보여주어야 하기 때문에 
+      userid 정보를 value에 저장(POST /user/signin 요청의 응답을 받은 후 수행)하여
+      폼(input)이 보이지 않도록 hidden 처리함
+    -->
+    <a href="/">HOME</a>
+    <form name="form_info" action="/user/profile" method="POST">
+      <input type="hidden" name="userid" />
+    </form>
+
+    <form name="form_login">
+      <h1>로그인</h1>
+      <div>
+        <label for="userid">ID</label>
+        <input id="userid" type="text" name="userid" required /><br />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" type="password" name="pw" required /><br />
+      </div>
+      <div>
+        <button type="button" onclick="login();">Login</button>
+        <a href="/user/signup">회원가입 페이지</a>
+      </div>
+    </form>
+
+    <!-- TODO: href 속성값 설정하기 -->
+
+    <script>
+      // TODO: [Login] 버튼 클릭시 서버에 로그인 요청하기
+      // POST /user/signin
+      async function login() {
+        const form = document.forms["form_login"];
+        const formInfo = document.forms["form_info"];
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const res = await axios({
+          method: "post",
+          url: "/user/signin",
+          data: {
+            userid: form.userid.value,
+            pw: form.pw.value,
+          },
+        });
+
+        const { data } = res;
+        console.log(data);
+        if (data) {
+          alert("로그인 성공!");
+          console.log(formInfo.userid.value, form.userid.value);
+          formInfo.userid.value = form.userid.value;
+          formInfo.submit();
+        } else {
+          alert("아이디 비밀번호가 다릅니다.");
+          form.reset();
+        }
+
+        // if (res.status === 200) {
+        // } else if (res === false) {
+        // }
+      }
+    </script>
+  </body>
+</html>

@@ -1,11 +1,16 @@
-const express = require("express");
-const controller = require("../controller/Cvisitor.js");
-const router = express.Router();
+const express=require('express')
+const router=express.Router();
 
-router.get("/", controller.main);
-router.get("/visitor", controller.getVisitors);
-router.post("/write", controller.post_comment);
-router.get("/get", controller.get_visitor);
-router.patch("/edit", controller.patch_comment);
-router.delete("/delete", controller.delete_comment);
-module.exports = router;
+const controller=require('../controller/Cmain')
+
+router.get("/",controller.main)
+router.get("/visitors", controller.visitor);
+
+router.get("/visitor/:id", controller.getVisitorById);
+
+router.post("/visitors",controller.postVisitor);
+router.delete("/visitors", controller.deleteVisitor);
+router.patch("/visitors", controller.patchVisitor);
+
+
+module.exports=router;
