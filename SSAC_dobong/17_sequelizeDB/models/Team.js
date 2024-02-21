@@ -1,24 +1,24 @@
-const Team = function (Sequelize, DataTypes) {
-  const model = Sequelize.define(
+const TeamModel = (sequelize, DataTypes) => {
+  const Team = sequelize.define(
     "Team",
     {
       team_id: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
         allowNull: false,
       },
       name: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.STRING(63),
         allowNull: false,
       },
     },
     {
-      tableName: "team",
-      timestamps: true, // 오타 수정: timestamps
       freezeTableName: true,
     }
   );
 
-  return model; // 모델 객체 반환
+  return Team;
 };
 
-module.exports = Team;
+module.exports = TeamModel;

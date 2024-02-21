@@ -1,21 +1,27 @@
-const Game = function (Sequelize, DataTypes) {
-  const model = Sequelize.define(
+const GameModel = (sequelize, DataTypes) => {
+  const Game = sequelize.define(
     "Game",
     {
-      id: {
-        type: DataTypes.STRING(10),
+      game_id: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
+      },
+      date: {
+        type: DataTypes.DATE,
+        allowNull: false,
+      },
+      location: {
+        type: DataTypes.STRING(63),
         allowNull: false,
       },
     },
     {
-      tableName: "game",
-      timestamps: true, // 오타 수정: timestamps
       freezeTableName: true,
     }
   );
 
-  return model; // 모델 객체 반환
+  return Game;
 };
-
-module.exports = Game;
+module.exports = GameModel;

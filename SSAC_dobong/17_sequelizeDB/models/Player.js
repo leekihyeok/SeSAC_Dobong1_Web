@@ -1,28 +1,28 @@
-const Player = function (Sequelize, DataTypes) {
-  const model = Sequelize.define(
+const PlayerModel = (sequelize, DataTypes) => {
+  const Player = sequelize.define(
     "Player",
     {
       player_id: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
+        autoIncrement: true,
       },
       name: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.STRING(60),
         allowNull: false,
       },
       age: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     {
-      tableName: "player",
-      timestamps: true, // 오타 수정: timestamps
       freezeTableName: true,
     }
   );
 
-  return model; // 모델 객체 반환
+  return Player;
 };
 
-module.exports = Player;
+module.exports = PlayerModel;

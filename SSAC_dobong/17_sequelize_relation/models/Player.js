@@ -1,18 +1,18 @@
-const ProfileModel = (sequelize, DataTypes) => {
-  const Profile = sequelize.define(
-    "Profile",
+const playerModel = (sequelize, DataTypes) => {
+  const Player = sequelize.define(
+    "Player",
     {
-      profile_id: {
+      player_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true,
       },
-      position: {
+      name: {
         type: DataTypes.STRING(63),
         allowNull: false,
       },
-      salary: {
+      age: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -21,8 +21,7 @@ const ProfileModel = (sequelize, DataTypes) => {
       freezeTableName: true,
     }
   );
-
-  return Profile;
+  return Player;
 };
 
-module.exports = ProfileModel;
+module.exports = playerModel;
