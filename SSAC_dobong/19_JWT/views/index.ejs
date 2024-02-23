@@ -10,6 +10,71 @@
   <body>
     <h1>JWT 사용해 로그인하기</h1>
     <div id="info"></div>
-    <a href="/login">로그인</a>
+
+    <script>
+      // 즉시 실행 함수
+      // 1. 함수를 만듦과 동시에 호출
+      // 2. 전역 변수 피하기 위해서 사용
+      //    -> 전역 변수는 다른 코드에 영향을 미칠 수 있어서 피해야함
+      // 3. 라이브러리 내의 전역변수 충돌을 피할 수 있음
+      (function () {
+        console.log("즉시 실행 함수");
+        console.log("즉시 실행 익명 함수");
+      })();
+
+      ((a) => {
+        console.log("화살표 함수 선언");
+        console.log(a);
+      })(1);
+
+      (function text(t) {
+        console.log(t);
+      })("안녕하세요");
+
+      // 시작
+      (async function () {
+        const info = document.getElementById("info");
+        const token = localStorage.getItem("login");
+
+        console.log(info);
+        console.log(token);
+
+        let data = "";
+
+        if (!token) {
+          // localStroage에 토큰이 없다면, 로그인 X
+          data = '<a href="/login">로그인</a>';
+        } else {
+          // localStorage에 토큰이 있다면, 로그인 O
+          const response = await axios({
+            method: "POST",
+            url: "/token",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+
+          console.log(response.data);
+          //{result: true, name: 'rekey'}
+          //{result: true, msg: '-------'}
+
+          if (response.data.result) {
+            data = `
+                <p>${response.data.name}님 환영합니다.</p>
+                <button type= "button" onclick= "logout()">로그아웃</button>
+            `;
+          }
+        }
+
+        info.innerHTML = data;
+      })();
+
+      function logout() {
+        // 로컬 스토리지에서 jwt 정보 삭제
+        localStorage.clear();
+        // 새로 고침으로 뷰 화면 변경
+        document.location.reload();
+      }
+    </script>
   </body>
 </html>
