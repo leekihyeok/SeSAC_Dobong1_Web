@@ -1,0 +1,135 @@
+@import "utils";
+// scss에서 파일 이름 앞에 '_' 들어가면 부분 파일이 가능
+// import도 가능
+
+/*
+1.기본
+ - nesting
+ - 자기자신 선택 &
+ - 변수 사용
+*/
+
+.div1 {
+  width: 100px;
+  height: 100px;
+  background-color: $color-red;
+  .div2 {
+    width: 50%;
+    height: 50%;
+    background-color: $color-orange;
+    box-shadow: inset $box-shadow;
+    .div3 {
+      background-color: $color-yellow;
+      width: 50%;
+      height: 50%;
+      box-shadow: $box-shadow;
+    }
+  }
+  .btn {
+    display: inline-block;
+    transition: $animaition-duration;
+    width: 33%;
+    font-size: 8px;
+    height: 40px;
+    padding: 0;
+    color: white;
+
+    // .btn.orangered
+    &.orangered {
+      background-color: orangered;
+    }
+
+    // .btn--opacity
+    &--opacity {
+      background-color: $color-blue;
+      opacity: 0.5;
+      &:hover {
+        opacity: 0.2;
+      }
+    }
+
+    // .btn--blue
+    &--blue {
+      background-color: $color-blue;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  background-color: gainsboro;
+  .box1 {
+    @include box;
+    // &:nth-child(1) {
+    //     width: 100px;
+    // }
+    // &:nth-child(2) {
+    //     width: 120px;
+    // }
+    // &:nth-child(3) {
+    //     width: 140px;
+    // }
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        width: 80px + 20px * $i;
+      }
+    }
+  }
+  .circle {
+    $circleBgColors: ($color-red, $color-yellow, $color-blue);
+    // index($리스트, $리스트의 value)
+    // 반환값 리스트의 value에 대한 index: 1, 2, 3......
+    @each $el in $circleBgColors {
+      $index: index($circleBgColors, $el);
+      &:nth-of-type(#{$index}) {
+        @include circle($el, 0.3 * $index);
+      }
+    }
+  }
+  .box2 {
+    @include box2();
+    &:nth-of-type(4) {
+      @include box2($color-yellow, 20px, navy);
+    }
+    &:nth-of-type(5) {
+      @include box2(orangered, 30px, black);
+    }
+  }
+}
+
+// 이미지에 접근하기
+.img-test {
+  width: 100px;
+  height: 100px;
+  border: 1px solid blue;
+  &.src-image {
+    background-image: url("../assets/sunny.png");
+    background-size: 100px;
+  }
+
+  &.public-image {
+    background-image: url("/assets/sunny.png");
+    background-size: 100px;
+  }
+}
+
+// 실습
+.boxContainer {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  .imgBox {
+    width: 200px;
+    height: 300px;
+    background-color: rgb(108, 76, 187);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20%;
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        background-image: url("/assets/practice#{$i}.png");
+      }
+    }
+  }
+}

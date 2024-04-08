@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function PostList() {
+function ShowPost() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -30,34 +30,12 @@ function PostList() {
     }
   }, [posts]);
 
-  const titleSt = {
-    fontSize: "50px",
-    fontWeight: "bold",
-    textAlign: "center",
-  };
-
-  const loadingSt = {
-    fontSize: "30px",
-    fontWeight: "bold",
-    textAlign: "center",
-  };
-
-  const divSt = {
-    width: "80%",
-    height: "80px",
-    backgroundColor: "skyblue",
-    margin: "10px auto",
-    borderRadius: "10px",
-    padding: "10px",
-    boxShadow: "5px 5px 5px lightgrey",
-  };
-
   return (
     <>
-      <div style={titleSt}>Post List</div>
-      {loading && <div style={loadingSt}>Loading...</div>}
+      <div className="titleSt">Post List</div>
+      {loading && <div className="loadingSt">Loading...</div>}
       {posts.map((post) => (
-        <div style={divSt} key={post.id}>
+        <div className="divSt" key={post.id}>
           No. {post.id} - {post.title}
           <br />
           {post.body}
@@ -66,7 +44,7 @@ function PostList() {
     </>
   );
 }
-export default function Practice05() {
+export default function PostList() {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState("보기");
 
@@ -78,7 +56,7 @@ export default function Practice05() {
   return (
     <>
       <button onClick={changeVisible}>글 목록 {text}</button>
-      {visible && <PostList></PostList>}
+      {visible && <ShowPost />}
     </>
   );
 }
