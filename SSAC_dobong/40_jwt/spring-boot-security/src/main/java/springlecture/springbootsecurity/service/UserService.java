@@ -2,7 +2,6 @@ package springlecture.springbootsecurity.service;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,6 +16,7 @@ public class UserService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
     public UserEntity create(final UserEntity userEntity){
         if (userEntity == null || userEntity.getEmail() == null) {
             throw new RuntimeException("Invalid arguments");
@@ -35,12 +35,15 @@ public class UserService {
     }
 
     public UserEntity getByCredentials(final String email, final String password) {
-//        return userRepository.findByEmailAndPassword(email, password);
-//        mathes(password, 비교할 암호화된 비밀번호)
-        UserEntity user = userRepository.findByEmail(email);
-        if(user!=null && passwordEncoder.matches(password, user.getPassword())){
-            return user;
+        // [before] 패스워드 암호화 적용 전
+        // return userRepository.findByEmailAndPassword(email, password);
 
+        // [after] 패스워드 암호화 적용
+        // matches(password, 비교할 암호화된 비밀번호)
+        UserEntity user = userRepository.findByEmail(email);
+
+        if(user != null && passwordEncoder.matches(password, user.getPassword())){
+            return user;
         } else return null;
     }
 }
