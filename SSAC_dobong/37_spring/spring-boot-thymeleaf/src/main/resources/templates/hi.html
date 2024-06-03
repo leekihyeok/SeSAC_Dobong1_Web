@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>hello</h1>
+  <!--   th: text = innerText   -->
+  <h2 th:text="'안녕하세요' + ${msg}"></h2>
+  <!--   th: utext = innerHTML   -->
+  <div th:utext="${msg2}"></div>
+  <!--   th: value = input안에 value를 넣어줌   -->
+  <input type="text" th:value="${msg}">
+
+  <div th:if="${age} >= 20">성인입니다.</div>
+  <div th:unless="${age} >= 20">미성년자입니다.</div>
+
+  <div th:if="${msg} == 'hello'">Wow</div>
+
+  <div th:switch="${userType}">
+    <div th:case="Admin">관리자입니다.</div>
+    <div th:case="User">사용자입니다.</div>
+    <!--    th:case = "*" -> default case    -->
+    <div th:case="*">권한이 없습니다.</div>
+  </div>
+
+  <div th:each="f:${fruits}">
+    <p th:text="${f}"></p>
+  </div>
+
+  <a href="https://www.naver.com/">네이버</a>
+  <a th:href="@{https://www.naver.com/}">네이버</a>
+  <a th:href="@{{link}(link=${url})}">코딩온 자습</a>
+
+  <div th:text="${hello.getMsg()}"></div>
+</body>
+</html>

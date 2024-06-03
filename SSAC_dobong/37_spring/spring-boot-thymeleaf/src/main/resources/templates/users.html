@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>사용자 목록</h1>
+    <table border="1">
+      <thead>
+      <tr>
+        <th>이름</th>
+        <th>성별</th>
+        <th>생년월일</th>
+        <th>관심사</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="user : ${users}">
+        <td th:text="${user.name}">이름</td>
+        <td th:text="${user.gender}">성별</td>
+        <td th:text="${user.birthdate}">생년월일</td>
+        <td th:text="${user.interests}">관심사</td>
+      </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
